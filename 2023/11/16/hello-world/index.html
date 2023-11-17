@@ -186,7 +186,20 @@
             <h2>Hello World</h2>
 
   <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">debounce</span>(<span class="params">func, wait, immediate</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> timeout;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> context = <span class="variable language_">this</span>, args = <span class="variable language_">arguments</span>;</span><br><span class="line">    <span class="keyword">let</span> later = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      timeout = <span class="literal">null</span>;</span><br><span class="line">      <span class="keyword">if</span> (!immediate) func.<span class="title function_">apply</span>(context, args);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">let</span> callNow = immediate &amp;&amp; !timeout;</span><br><span class="line">    <span class="built_in">clearTimeout</span>(timeout);</span><br><span class="line">    timeout = <span class="built_in">setTimeout</span>(later, wait);</span><br><span class="line">    <span class="keyword">if</span> (callNow) func.<span class="title function_">apply</span>(context, args);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre><code class="highlight javascript"><span class="keyword">function</span> <span class="title function_">debounce</span>(<span class="params">func, wait, immediate</span>) &#123;
+  <span class="keyword">let</span> timeout;
+  <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>) &#123;
+    <span class="keyword">let</span> context = <span class="variable language_">this</span>, args = <span class="variable language_">arguments</span>;
+    <span class="keyword">let</span> later = <span class="keyword">function</span>(<span class="params"></span>) &#123;
+      timeout = <span class="literal">null</span>;
+      <span class="keyword">if</span> (!immediate) func.<span class="title function_">apply</span>(context, args);
+    &#125;;
+    <span class="keyword">let</span> callNow = immediate &amp;&amp; !timeout;
+    <span class="built_in">clearTimeout</span>(timeout);
+    timeout = <span class="built_in">setTimeout</span>(later, wait);
+    <span class="keyword">if</span> (callNow) func.<span class="title function_">apply</span>(context, args);
+  &#125;;
+&#125;;</code></pre>
 
   <p> — Nov 16, 2023</p>
   
